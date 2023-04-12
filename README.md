@@ -2,6 +2,8 @@
 
 Dark and Light Theme Switch CSS
 
+[![NPM version](https://img.shields.io/npm/v/shine-and-bright.svg)](https://www.npmjs.com/package/shine-and-bright)
+
 ## Installation
 
 ```sh
@@ -10,8 +12,8 @@ npm i shine-and-bright
 
 ## Usage
 
-Include `shine-and-bright/index.css` in your application.
-Below is an example of including it in the route CSS.
+Include `shine-and-bright/index.css` in your application.  
+Below is an example of including it in the root CSS.
 
 ```css
 @import url("./node_modules/shine-and-bright/index.css");
@@ -27,7 +29,7 @@ Switch:
 </button>
 ```
 
-![bright](images/switch-bright.png) <-> ![shine](images/switch-shine.png)
+![bright](./images/switch-bright.png) <-> ![shine](./images/switch-shine.png)
 
 Icon only:
 
