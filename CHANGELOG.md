@@ -1,5 +1,11 @@
 # shine-and-bright
 
+## 0.2.0
+
+### Minor Changes
+
+- [#7](https://github.com/ota-meshi/shine-and-bright/pull/7) [`6ebcb75`](https://github.com/ota-meshi/shine-and-bright/commit/6ebcb7590c93385eb1f198171edcb4f62e098b26) Thanks [@ota-meshi](https://github.com/ota-meshi)! - refactor css
+
 ## 0.1.2
 
 ### Patch Changes
