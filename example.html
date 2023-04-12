@@ -9,23 +9,44 @@
       .dark {
         background-color: darkblue;
       }
+      html {
+        transition: background-color 0.5s;
+      }
     </style>
   </head>
   <body>
+    Switch:
     <button class="snb-shine-and-bright-switch">
       <span class="snb-shine-and-bright"></span>
     </button>
     <br />
+    Icon:
     <button class="snb-shine-and-bright"></button>
     <br />
+    Moon:
     <button class="snb-shine"></button>
     <br />
+    Sun:
     <button class="snb-bright"></button>
+    <br />
+    Toggle Sun and Moon:
+    <button class="snb-bright toggle-target"></button>
     <br />
     <script>
       for (const button of document.querySelectorAll("button")) {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (e) => {
           document.documentElement.classList.toggle("dark");
+        });
+      }
+      for (const button of document.querySelectorAll(".toggle-target")) {
+        button.addEventListener("click", (e) => {
+          if (e.currentTarget.classList.contains("snb-shine")) {
+            e.currentTarget.classList.remove("snb-shine");
+            e.currentTarget.classList.add("snb-bright");
+          } else if (e.currentTarget.classList.contains("snb-bright")) {
+            e.currentTarget.classList.remove("snb-bright");
+            e.currentTarget.classList.add("snb-shine");
+          }
         });
       }
     </script>

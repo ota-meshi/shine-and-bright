@@ -38,13 +38,12 @@
   --i-bright-color-second: var(--snb-bright-color-second, gold);
   --i-shine-color: var(--snb-shine-color, yellow);
 
-  --i-bright-size: calc(var(--i-size) / 2);
+  --i-circle-size: calc(var(--i-size) * 2 / 3);
   --i-bright-dot-size: calc(var(--i-size) / 9);
-  --i-bright-dot-offset: calc(var(--i-bright-size) * 2 / 3);
+  --i-bright-dot-offset: calc(var(--i-circle-size) / 2);
   --i-bright-dot-offset-n: calc(var(--i-bright-dot-offset) * -1);
   --i-bright-dot-45deg-offset: calc(var(--i-bright-dot-offset) * 0.7071);
   --i-bright-dot-45deg-offset-n: calc(var(--i-bright-dot-45deg-offset) * -1);
-  --i-shine-size: calc(var(--i-size) * 2 / 3);
   height: var(--i-size);
   width: var(--i-size);
   box-sizing: border-box;
@@ -76,14 +75,15 @@
   margin: auto;
   box-sizing: border-box;
   border-radius: 50%;
+  height: var(--i-circle-size);
+  width: var(--i-circle-size);
   transition: all var(--i-animation-duration);
 }
 :is(.snb-shine-and-bright, .snb-bright):before {
   /* bright */
-  height: var(--i-bright-size);
-  width: var(--i-bright-size);
-  box-shadow: var(--i-bright-size) calc(var(--i-bright-size) * -1) 0 0
+  box-shadow: var(--i-circle-size) calc(var(--i-circle-size) * -1) 0 0
     var(--i-bright-color) inset;
+  transform: scale(0.75);
 }
 :is(.snb-shine-and-bright, .snb-shine, .snb-bright):after {
   content: "";
@@ -117,10 +117,9 @@
 .dark .snb-shine-and-bright:before,
 .snb-shine:before {
   /* shine */
-  height: var(--i-shine-size);
-  width: var(--i-shine-size);
-  box-shadow: calc(var(--i-shine-size) / 3) calc(var(--i-shine-size) / 4 * -1) 0
-    0 var(--i-shine-color) inset;
+  box-shadow: calc(var(--i-circle-size) / 3) calc(var(--i-circle-size) / 4 * -1)
+    0 0 var(--i-shine-color) inset;
+  transform: scale(1);
 }
 .dark .snb-shine-and-bright:after,
 .snb-shine:after {
