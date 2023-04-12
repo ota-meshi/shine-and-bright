@@ -1,5 +1,11 @@
 # shine-and-bright
 
+## 0.1.2
+
+### Patch Changes
+
+- [#5](https://github.com/ota-meshi/shine-and-bright/pull/5) [`666e0f1`](https://github.com/ota-meshi/shine-and-bright/commit/666e0f140398d627ac3f647f6cc140a572afb833) Thanks [@ota-meshi](https://github.com/ota-meshi)! - update readme
+
 ## 0.1.1
 
 ### Patch Changes
