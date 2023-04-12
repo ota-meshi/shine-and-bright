@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Example</title>
+    <style>
+      @import url("./index.css");
+      :root {
+        /* --snb-icon-size: 180px; */
+      }
+      .dark {
+        background-color: darkblue;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="snb-shine-and-bright-switch">
+      <span class="snb-shine-and-bright"></span>
+    </button>
+    <br />
+    <button class="snb-shine-and-bright"></button>
+    <br />
+    <button class="snb-shine"></button>
+    <br />
+    <button class="snb-bright"></button>
+    <br />
+    <script>
+      for (const button of document.querySelectorAll("button")) {
+        button.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+        });
+      }
+    </script>
+  </body>
+</html>

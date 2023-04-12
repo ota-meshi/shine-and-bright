@@ -1,0 +1,130 @@
+.snb-shine-and-bright-switch {
+  --i-size: var(--snb-icon-size, 18px);
+  --i-switch-padding: var(--snb-switch-padding, calc(var(--i-size) / 18));
+  --i-switch-border-width: var(
+    --snb-switch-border-width,
+    calc(var(--i-size) / 18)
+  );
+  --i-switch-height: calc(
+    var(--i-size) + var(--i-switch-padding) * 2 + var(--i-switch-border-width) *
+      2
+  );
+  --i-switch-width: var(
+    --snb-switch-width,
+    calc(
+      var(--i-size) * 2 + var(--i-switch-padding) * 2 +
+        var(--i-switch-border-width) * 2
+    )
+  );
+  --i-border-color: var(--snb-switch-border-color, #888);
+
+  position: relative;
+  display: inline-flex;
+  width: var(--i-switch-width);
+  height: var(--i-switch-height);
+  border-radius: calc(var(--i-switch-height) / 2);
+  border: var(--i-switch-border-width) solid var(--i-border-color);
+  background-color: var(--ep-background-color);
+  padding: var(--i-switch-padding);
+  cursor: pointer;
+}
+
+.snb-shine-and-bright,
+.snb-shine,
+.snb-bright {
+  --i-size: var(--snb-icon-size, 18px);
+  --i-animation-duration: var(--snb-animation-duration, 300ms);
+  --i-bright-color: var(--snb-bright-color, orange);
+  --i-bright-color-second: var(--snb-bright-color-second, gold);
+  --i-shine-color: var(--snb-shine-color, yellow);
+
+  --i-bright-size: calc(var(--i-size) / 2);
+  --i-bright-dot-size: calc(var(--i-size) / 9);
+  --i-bright-dot-offset: calc(var(--i-bright-size) * 2 / 3);
+  --i-bright-dot-offset-n: calc(var(--i-bright-dot-offset) * -1);
+  --i-bright-dot-45deg-offset: calc(var(--i-bright-dot-offset) * 0.7071);
+  --i-bright-dot-45deg-offset-n: calc(var(--i-bright-dot-45deg-offset) * -1);
+  --i-shine-size: calc(var(--i-size) * 2 / 3);
+  height: var(--i-size);
+  width: var(--i-size);
+  box-sizing: border-box;
+  padding: 0;
+  position: relative;
+  display: inline-flex;
+}
+.snb-shine-and-bright-switch
+  > :is(.snb-shine-and-bright, .snb-shine, .snb-bright) {
+  border: var(--i-switch-border-width) solid var(--i-border-color);
+  border-radius: 50%;
+  /* for move */
+  position: absolute;
+  transition: left var(--i-animation-duration);
+  left: var(--i-switch-padding);
+}
+.dark
+  .snb-shine-and-bright-switch
+  > :is(.snb-shine-and-bright, .snb-shine, .snb-bright) {
+  left: calc(
+    var(--i-switch-width) - var(--i-switch-padding) -
+      var(--i-switch-border-width) * 2 - var(--i-size)
+  );
+}
+
+:is(.snb-shine-and-bright, .snb-shine, .snb-bright):before {
+  content: "";
+  display: block;
+  margin: auto;
+  box-sizing: border-box;
+  border-radius: 50%;
+  transition: all var(--i-animation-duration);
+}
+:is(.snb-shine-and-bright, .snb-bright):before {
+  /* bright */
+  height: var(--i-bright-size);
+  width: var(--i-bright-size);
+  box-shadow: var(--i-bright-size) calc(var(--i-bright-size) * -1) 0 0
+    var(--i-bright-color) inset;
+}
+:is(.snb-shine-and-bright, .snb-shine, .snb-bright):after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  height: var(--i-bright-dot-size);
+  width: var(--i-bright-dot-size);
+  position: absolute;
+  left: calc(50% - var(--i-bright-dot-size) / 2);
+  top: calc(50% - var(--i-bright-dot-size) / 2);
+  transition: all var(--i-animation-duration);
+}
+:is(.snb-shine-and-bright, .snb-bright):after {
+  /* bright */
+  opacity: 1;
+  box-shadow: 0 var(--i-bright-dot-offset-n) 0 0 var(--i-bright-color-second),
+    var(--i-bright-dot-45deg-offset-n) var(--i-bright-dot-45deg-offset-n) 0 0
+      var(--i-bright-color),
+    var(--i-bright-dot-offset-n) 0 0 0 var(--i-bright-color-second),
+    var(--i-bright-dot-45deg-offset-n) var(--i-bright-dot-45deg-offset) 0 0
+      var(--i-bright-color),
+    0 var(--i-bright-dot-offset) 0 0 var(--i-bright-color-second),
+    var(--i-bright-dot-45deg-offset) var(--i-bright-dot-45deg-offset) 0 0
+      var(--i-bright-color),
+    var(--i-bright-dot-offset) 0 0 0 var(--i-bright-color-second),
+    var(--i-bright-dot-45deg-offset) var(--i-bright-dot-45deg-offset-n) 0 0
+      var(--i-bright-color);
+  transform: rotate(45deg);
+}
+
+.dark .snb-shine-and-bright:before,
+.snb-shine:before {
+  /* shine */
+  height: var(--i-shine-size);
+  width: var(--i-shine-size);
+  box-shadow: calc(var(--i-shine-size) / 3) calc(var(--i-shine-size) / 4 * -1) 0
+    0 var(--i-shine-color) inset;
+}
+.dark .snb-shine-and-bright:after,
+.snb-shine:after {
+  /* shine */
+  opacity: 0;
+  transform: rotate(135deg) scale(0.5);
+}
