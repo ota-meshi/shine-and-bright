@@ -1,0 +1,59 @@
+{
+  "name": "shine-and-bright",
+  "version": "0.0.1",
+  "description": "Dark and Light Theme Switch CSS",
+  "main": "index.css",
+  "module": "index.css",
+  "files": [
+    "index.css"
+  ],
+  "scripts": {
+    "clean": "rimraf .nyc_output lib coverage",
+    "build": "exit 0",
+    "lint": "eslint . --ext .js,.ts,.json",
+    "eslint-fix": "npm run lint -- --fix",
+    "test": "npm run mocha -- \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
+    "cover": "nyc --reporter=lcov npm run test",
+    "preversion": "npm run lint && npm test",
+    "ts": "env-cmd -e basic node -r esbuild-register",
+    "mocha": "npm run ts -- ./node_modules/mocha/bin/mocha.js",
+    "prerelease": "npm run clean && npm run build",
+    "release": "changeset publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ota-meshi/shine-and-bright.git"
+  },
+  "keywords": [
+    "css",
+    "theme-switch"
+  ],
+  "author": "Yosuke Ota",
+  "funding": "https://github.com/sponsors/ota-meshi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ota-meshi/shine-and-bright/issues"
+  },
+  "homepage": "https://github.com/ota-meshi/shine-and-bright#readme",
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.4.6",
+    "@changesets/cli": "^2.24.2",
+    "@ota-meshi/eslint-plugin": "^0.13.7",
+    "env-cmd": "^10.1.0",
+    "esbuild": "^0.17.0",
+    "esbuild-register": "^3.3.3",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-json-schema-validator": "^4.4.0",
+    "eslint-plugin-jsonc": "^2.7.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-node-dependencies": "^0.10.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.0.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
