@@ -21,7 +21,7 @@ Below is an example of including it in the root CSS.
 
 ### Markup
 
-Switch:
+**Switch**:
 
 ```html
 <button class="snb-shine-and-bright-switch">
@@ -29,21 +29,37 @@ Switch:
 </button>
 ```
 
+It changes to a moon icon when an ancestor element has `dark` class.  
+e.g.:
+
+```html
+<button id="foo" class="snb-shine-and-bright-switch">
+  <span class="snb-shine-and-bright"></span>
+</button>
+<script>
+  document.querySelector("#foo").addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+  });
+</script>
+```
+
 ![bright](./images/switch-bright.png) <-> ![shine](./images/switch-shine.png)
 
-Icon only:
+**Icon only**:
 
 ```html
 <button class="snb-shine-and-bright"></button>
 ```
 
-Moon only:
+It changes to a moon icon when an ancestor element has `dark` class.
+
+**Moon only**:
 
 ```html
 <button class="snb-shine"></button>
 ```
 
-Sun only:
+**Sun only**:
 
 ```html
 <button class="snb-bright"></button>
