@@ -40,7 +40,7 @@
     "@changesets/cli": "^2.24.2",
     "@ota-meshi/eslint-plugin": "^0.13.7",
     "env-cmd": "^10.1.0",
-    "esbuild": "^0.17.0",
+    "esbuild": "^0.18.0",
     "esbuild-register": "^3.3.3",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.8.0",
