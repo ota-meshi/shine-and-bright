@@ -45,6 +45,14 @@ e.g.:
 
 ![bright](./images/switch-bright.png) <-> ![shine](./images/switch-shine.png)
 
+**Twinkle on hover**:
+
+```html
+<button class="snb-shine-and-bright-switch">
+  <span class="snb-shine-and-bright snb-twinkle-on-hover"></span>
+</button>
+```
+
 **Icon only**:
 
 ```html
