@@ -1,5 +1,11 @@
 # shine-and-bright
 
+## 0.3.0
+
+### Minor Changes
+
+- [#30](https://github.com/ota-meshi/shine-and-bright/pull/30) [`35f678b`](https://github.com/ota-meshi/shine-and-bright/commit/35f678be8abdbdfd5bb8bfe1484d8cf6926ec3ba) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: add `snb-twinkle-on-hover`
+
 ## 0.2.0
 
 ### Minor Changes
