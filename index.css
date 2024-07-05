@@ -37,6 +37,7 @@
   --i-bright-color: var(--snb-bright-color, orange);
   --i-bright-color-second: var(--snb-bright-color-second, gold);
   --i-shine-color: var(--snb-shine-color, yellow);
+  --i-shine-color-second: var(--snb-shine-color-second, lemonchiffon);
 
   --i-circle-size: calc(var(--i-size) * 2 / 3);
   --i-bright-dot-size: calc(var(--i-size) / 9);
@@ -79,12 +80,6 @@
   width: var(--i-circle-size);
   transition: all var(--i-animation-duration);
 }
-:is(.snb-shine-and-bright, .snb-bright):before {
-  /* bright */
-  box-shadow: var(--i-circle-size) calc(var(--i-circle-size) * -1) 0 0
-    var(--i-bright-color) inset;
-  transform: scale(0.75);
-}
 :is(.snb-shine-and-bright, .snb-shine, .snb-bright):after {
   content: "";
   display: block;
@@ -96,10 +91,16 @@
   top: calc(50% - var(--i-bright-dot-size) / 2);
   transition: all var(--i-animation-duration);
 }
+:is(.snb-shine-and-bright, .snb-bright):before {
+  /* bright core */
+  box-shadow: var(--i-circle-size) calc(var(--i-circle-size) * -1) 0 0
+    var(--i-bright-color) inset;
+  scale: 0.75;
+}
 :is(.snb-shine-and-bright, .snb-bright):after {
-  /* bright */
-  opacity: 1;
-  box-shadow: 0 var(--i-bright-dot-offset-n) 0 0 var(--i-bright-color-second),
+  /* bright flares */
+  --i-bright-box-shadow: 0 var(--i-bright-dot-offset-n) 0 0
+      var(--i-bright-color-second),
     var(--i-bright-dot-45deg-offset-n) var(--i-bright-dot-45deg-offset-n) 0 0
       var(--i-bright-color),
     var(--i-bright-dot-offset-n) 0 0 0 var(--i-bright-color-second),
@@ -111,19 +112,54 @@
     var(--i-bright-dot-offset) 0 0 0 var(--i-bright-color-second),
     var(--i-bright-dot-45deg-offset) var(--i-bright-dot-45deg-offset-n) 0 0
       var(--i-bright-color);
-  transform: rotate(45deg);
+  opacity: 1;
+  box-shadow: var(--i-bright-box-shadow);
+  rotate: 45deg;
 }
 
 .dark .snb-shine-and-bright:before,
 .snb-shine:before {
-  /* shine */
-  box-shadow: calc(var(--i-circle-size) / 3) calc(var(--i-circle-size) / 4 * -1)
-    0 0 var(--i-shine-color) inset;
-  transform: scale(1);
+  /* shine core */
+  --i-shine-box-shadow: calc(var(--i-circle-size) / 3)
+    calc(var(--i-circle-size) / -4) 0 0 var(--i-shine-color) inset;
+  --i-shine-box-shadow-second: calc(var(--i-circle-size) / 3)
+    calc(var(--i-circle-size) / -4) 0 0 var(--i-shine-color-second) inset;
+  box-shadow: var(--i-shine-box-shadow);
+  scale: 1;
 }
 .dark .snb-shine-and-bright:after,
 .snb-shine:after {
-  /* shine */
+  /* shine flares (hidden) */
   opacity: 0;
-  transform: rotate(135deg) scale(0.5);
+  scale: 0.5;
+  rotate: 135deg;
+}
+
+.snb-twinkle-on-hover:is(.snb-shine-and-bright, .snb-bright):hover:after {
+  animation: snb-bright-twinkle-animation var(--i-animation-duration) infinite;
+}
+.dark .snb-twinkle-on-hover.snb-shine-and-bright:hover:before,
+.snb-twinkle-on-hover.snb-shine:hover:before {
+  rotate: -180deg;
+  box-shadow: var(--i-shine-box-shadow-second);
+}
+
+@keyframes snb-bright-twinkle-animation {
+  0% {
+    box-shadow: var(--i-bright-box-shadow);
+  }
+  50% {
+    box-shadow: 0 var(--i-bright-dot-offset-n) 0 0 var(--i-bright-color),
+      var(--i-bright-dot-45deg-offset-n) var(--i-bright-dot-45deg-offset-n) 0 0
+        var(--i-bright-color-second),
+      var(--i-bright-dot-offset-n) 0 0 0 var(--i-bright-color),
+      var(--i-bright-dot-45deg-offset-n) var(--i-bright-dot-45deg-offset) 0 0
+        var(--i-bright-color-second),
+      0 var(--i-bright-dot-offset) 0 0 var(--i-bright-color),
+      var(--i-bright-dot-45deg-offset) var(--i-bright-dot-45deg-offset) 0 0
+        var(--i-bright-color-second),
+      var(--i-bright-dot-offset) 0 0 0 var(--i-bright-color),
+      var(--i-bright-dot-45deg-offset) var(--i-bright-dot-45deg-offset-n) 0 0
+        var(--i-bright-color-second);
+  }
 }
