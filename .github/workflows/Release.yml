@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write
   issues: write
   pull-requests: write
 
@@ -23,6 +24,9 @@ jobs:
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          registry-url: https://registry.npmjs.org
 
       - name: Install Dependencies
         run: npm install --legacy-peer-deps
@@ -32,9 +36,6 @@ jobs:
         uses: changesets/action@v2.0.0
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: npm run release
-          commit: "chore: release shine-and-bright"
-          title: "chore: release shine-and-bright"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          publish-script: npm run release
+          commit-message: "chore: release shine-and-bright"
+          pr-title: "chore: release shine-and-bright"
