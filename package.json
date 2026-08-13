@@ -38,7 +38,7 @@
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.0",
     "@changesets/cli": "^3.0.0",
-    "@ota-meshi/eslint-plugin": "^0.15.0",
+    "@ota-meshi/eslint-plugin": "^0.20.0",
     "env-cmd": "^11.0.0",
     "esbuild": "^0.28.0",
     "esbuild-register": "^3.3.3",
